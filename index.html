@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Meu Site</title>
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="footer.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="site-header__inner">
+
+            <!-- LOGO -->
+            <a href="index.html" class="site-brand">
+                <img src="imagens/Logo-nca.png" alt="Logo" class="site-brand__icon">
+            </a>
+
+            <!-- BOTÃO MOBILE (checkbox + label) -->
+            <input type="checkbox" id="menu-toggle" class="site-toggle-input">
+            <label for="menu-toggle" class="site-toggler">☰</label>
+
+            <!-- NAVBAR -->
+            <nav class="site-navbar">
+
+                <ul class="site-nav">
+                    <li class="nav-item"><a class="nav-link active" href="#inicio">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#dados">Dados</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#amostras">Amostras</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#orientacoes">Licenças e Termos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contato">Contatos</a></li>
+                </ul>
+
+                <!-- abre o popup de download -->
+                <a href="#baixar" class="btn-inscreva" data-abrir-download>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <path d="M12 3v12m0 0l-4-4m4 4l4-4M4 20h16" />
+                    </svg>
+                    Baixar Dataset
+                </a>
+
+            </nav>
+
+        </div>
+    </header>
+
+    <section class="hero" id="inicio">
+        <!-- Fundo animado (rede de pontos e linhas) -->
+        <canvas id="hero-bg" class="hero__bg"></canvas>
+
+        <div class="hero__inner">
+
+            <!-- ESQUERDA: texto -->
+            <div class="hero__content">
+                <div class="hero__badges">
+                    <span class="badge badge--dataset">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <ellipse cx="12" cy="5" rx="8" ry="3" />
+                            <path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5" />
+                            <path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6" />
+                        </svg>
+                        Dataset
+                    </span>
+                    <span class="badge badge--medical">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="3" />
+                            <circle cx="9" cy="9" r="1.5" />
+                            <path d="M21 15l-5-5L5 21" />
+                        </svg>
+                        Imagens Médicas
+                    </span>
+                </div>
+
+                <h1>SteatoDB: Repositório de imagens de esteatose</h1>
+
+                <p>
+                    Base de dados de imagens para pesquisa e diagnóstico assistido por computador.
+                    Consulte as amostras e baixe os dados.
+                </p>
+            </div>
+
+            <!-- DIREITA: imagem -->
+            <div class="hero__media">
+                <img src="imagens/capa.png" alt="Imagem térmica representativa">
+            </div>
+        </div>
+    </section>
+
+    <div class="descricao" id="dados">
+        <div class="descricao__inner">
+            <h2>Descrição</h2>
+            <p>O <strong>SteatoDB</strong> é um conjunto de dados de imagens térmicas da região abdominal de pacientes
+                com esteatose hepática e de indivíduos sem a doença. A base foi concebida para apoiar pesquisas nas
+                áreas de visão computacional, aprendizado de máquina e processamento de imagens médicas, oferecendo
+                material para a investigação de abordagens computacionais aplicadas à análise de imagens térmicas. </p>
+
+            <p> O conjunto de dados permite explorar técnicas de análise e extração de características, reconhecimento
+                de padrões e classificação de imagens. Nesse contexto, sua utilização pode contribuir para estudos que
+                investigam diferenças nos padrões térmicos entre os grupos avaliados, bem como para o desenvolvimento de
+                métodos computacionais voltados à pesquisa em saúde. </p>
+
+            <p> O SteatoDB constitui, portanto, um recurso para pesquisadores e desenvolvedores interessados na
+                aplicação de técnicas computacionais à análise de imagens térmicas. Sua disponibilidade pode favorecer a
+                realização de estudos experimentais e a exploração de novas abordagens de visão computacional e
+                aprendizado de máquina no contexto da investigação da esteatose hepática.</p>
+        </div>
+    </div>
+
+    <section class="detalhes">
+        <div class="detalhes__inner">
+            <h2>Detalhes técnicos</h2>
+
+            <table class="tabela-dataset">
+                <tbody>
+                    <tr>
+                        <th scope="row">Modalidade</th>
+                        <td>Imagem térmica (infravermelho)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Câmera</th>
+                        <td>Termógrafo com sensor infravermelho FLIR, modelo S650C</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Resolução</th>
+                        <td>640 × 480 pixels</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Pacientes</th>
+                        <td>70 (16 com MASLD e 54 não doentes)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Quantidade de imagens</th>
+                        <td>350 (80 de pacientes com MASLD e 270 de pacientes não doentes)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Imagens por paciente</th>
+                        <td>5, com intervalo de 20 segundos entre cada captura</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Classes</th>
+                        <td>2 (MASLD e não doente)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Formato dos arquivos</th>
+                        <td>.JPG</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Aclimatação</th>
+                        <td>15 minutos em ambiente com 23 ºC e umidade relativa de 65%</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Posicionamento</th>
+                        <td>Decúbito dorsal, com a área abdominal desnuda; câmera acima do paciente, formando um ângulo
+                            de 90º</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Diagnóstico de referência</th>
+                        <td>Ultrassonografia da região abdominal superior ou total, realizada por especialista</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="samples" id="amostras">
+        <div class="samples__inner">
+
+            <h2 class="samples__title">Amostras</h2>
+            <p class="samples__subtitle">Clique em uma imagem para ampliar.</p>
+
+            <div class="samples__grid">
+
+                <figure class="sample">
+                    <button type="button" class="sample__img" aria-label="Ampliar Figura 1">
+                        <img src="imagens/fig1.jpg" alt="Imagem térmica da região abdominal - Figura 1">
+                    </button>
+                    <figcaption>
+                        <strong>Figura 1</strong> · Imagem térmica da região abdominal. Escala de 28,3 a 35,4 °C.
+                        Classe: [saudável / com esteatose].
+                    </figcaption>
+                </figure>
+
+                <figure class="sample">
+                    <button type="button" class="sample__img" aria-label="Ampliar Figura 2">
+                        <img src="imagens/fig2.jpg" alt="Imagem térmica da região abdominal - Figura 2">
+                    </button>
+                    <figcaption>
+                        <strong>Figura 2</strong> · Imagem térmica da região abdominal. Escala de 24,9 a 34,8 °C.
+                        Classe: [saudável / com esteatose].
+                    </figcaption>
+                </figure>
+
+                <figure class="sample">
+                    <button type="button" class="sample__img" aria-label="Ampliar Figura 3">
+                        <img src="imagens/fig3.jpg" alt="Imagem térmica da região abdominal - Figura 3">
+                    </button>
+                    <figcaption>
+                        <strong>Figura 3</strong> · Imagem térmica da região abdominal. Escala de 26,3 a 35,9 °C.
+                        Classe: [saudável / com esteatose].
+                    </figcaption>
+                </figure>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="notas">
+        <div class="notas__inner">
+
+            <!-- ORIENTAÇÕES PARA UTILIZAÇÃO -->
+            <details class="nota" id="orientacoes">
+                <summary>
+                    <h2>Orientações para utilização</h2>
+                    <span class="nota__toggle" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </span>
+                </summary>
+                <div class="nota__body">
+                    <p>
+                        O SteatoDB foi desenvolvido para apoiar pesquisas sobre a detecção de esteatose hepática a
+                        partir de imagens térmicas, incluindo o desenvolvimento e a avaliação de métodos computacionais
+                        de classificação e análise de imagens. O conjunto de dados destina-se exclusivamente à pesquisa
+                        e não substitui exames clínicos, nem deve ser utilizado isoladamente para estabelecer
+                        diagnósticos ou orientar decisões clínicas sobre pacientes.
+                    </p>
+                    <p>
+                        Antes de utilizar o conjunto de dados, é importante considerar suas características, incluindo o
+                        número de imagens e participantes e a distribuição entre as classes. Como cada participante
+                        possui cinco imagens, recomenda-se que a divisão entre os conjuntos de treinamento e teste seja
+                        realizada por participante, garantindo que imagens de uma mesma pessoa não estejam presentes em
+                        ambos os conjuntos e reduzindo o risco de vazamento de dados. Além disso, caso as imagens
+                        utilizem escalas de cores ajustadas individualmente, deve-se considerar que uma mesma cor pode
+                        corresponder a temperaturas diferentes em imagens distintas.
+                    </p>
+                </div>
+            </details>
+
+            <!-- ÉTICA E PRIVACIDADE -->
+            <details class="nota" id="etica">
+                <summary>
+                    <h2>Ética e privacidade dos dados</h2>
+                    <span class="nota__toggle" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </span>
+                </summary>
+                <div class="nota__body">
+                    <p>
+                        O uso do SteatoDB deve respeitar os princípios éticos aplicáveis à pesquisa científica, com
+                        atenção à privacidade, à confidencialidade e à proteção dos participantes. As imagens
+                        disponibilizadas devem ser utilizadas exclusivamente para as finalidades autorizadas, sendo
+                        proibidas quaisquer tentativas de identificação dos indivíduos retratados ou formas de
+                        utilização que comprometam sua privacidade. Os usuários também devem respeitar as condições de
+                        acesso e compartilhamento da base de dados, garantindo seu uso responsável em pesquisas e
+                        atividades acadêmicas.
+                    </p>
+                </div>
+            </details>
+
+        </div>
+    </section>
+
+    <!-- ícones reutilizáveis (não aparecem na tela) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <symbol id="icon-folder" viewBox="0 0 24 24">
+            <path fill="currentColor"
+                d="M3 6.5A1.5 1.5 0 0 1 4.5 5H9l2 2.5h8.5A1.5 1.5 0 0 1 21 9v8.5a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5z" />
+        </symbol>
+        <symbol id="icon-check" viewBox="0 0 24 24">
+            <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"
+                d="M5 12.5l4.5 4.5L19 7.5" />
+        </symbol>
+    </svg>
+
+    <section class="arquivos" id="arquivos">
+        <div class="arquivos__inner">
+
+            <h2 class="arquivos__title">Estrutura dos arquivos</h2>
+            <p class="arquivos__intro">
+                Os arquivos do SteatoDB estão organizados em pastas, primeiro pela classe e depois pelo ano.
+            </p>
+
+            <div class="arquivos__card">
+
+                <!-- ESQUERDA: árvore de pastas -->
+                <ul class="tree" aria-label="Estrutura de pastas do SteatoDB">
+                    <li class="tree__root">
+                        <span class="tree__row">
+                            <svg class="tree__icon" aria-hidden="true">
+                                <use href="#icon-folder" />
+                            </svg>
+                            SteatoDB/
+                        </span>
+
+                        <ul>
+                            <li>
+                                <span class="tree__row">
+                                    <svg class="tree__icon" aria-hidden="true">
+                                        <use href="#icon-folder" />
+                                    </svg>
+                                    pacientes sem esteatose/
+                                </span>
+                                <ul>
+                                    <li>
+                                        <span class="tree__row">
+                                            <svg class="tree__icon" aria-hidden="true">
+                                                <use href="#icon-folder" />
+                                            </svg>
+                                            pacientes sem esteatose 2023/
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span class="tree__row">
+                                            <svg class="tree__icon" aria-hidden="true">
+                                                <use href="#icon-folder" />
+                                            </svg>
+                                            pacientes sem esteatose 2026/
+                                        </span>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <span class="tree__row">
+                                    <svg class="tree__icon" aria-hidden="true">
+                                        <use href="#icon-folder" />
+                                    </svg>
+                                    pacientes com esteatose/
+                                </span>
+                                <ul>
+                                    <li>
+                                        <span class="tree__row">
+                                            <svg class="tree__icon" aria-hidden="true">
+                                                <use href="#icon-folder" />
+                                            </svg>
+                                            pacientes com esteatose 2023/
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span class="tree__row">
+                                            <svg class="tree__icon" aria-hidden="true">
+                                                <use href="#icon-folder" />
+                                            </svg>
+                                            pacientes com esteatose 2026/
+                                        </span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- DIREITA: lista com ✓ -->
+                <ul class="arquivos__list">
+                    <li>
+                        <svg aria-hidden="true">
+                            <use href="#icon-check" />
+                        </svg>
+                        Pacientes com e sem esteatose em pastas separadas
+                    </li>
+                    <li>
+                        <svg aria-hidden="true">
+                            <use href="#icon-check" />
+                        </svg>
+                        Subpastas por ano: 2023 e 2026
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="baixar" id="baixar">
+        <div class="baixar__inner">
+            <div class="baixar__card">
+
+                <h2>Baixar o dataset</h2>
+
+                <p>
+                    Para baixar o SteatoDB, responda ao formulário de acesso. O conjunto de dados destina-se
+                    exclusivamente à pesquisa; antes de utilizá-lo, leia as orientações de utilização e a seção de ética
+                    e privacidade desta página.
+                </p>
+
+                <!-- abre o popup de download -->
+                <a href="#baixar" class="baixar__btn" data-abrir-download>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <path d="M12 3v12m0 0l-4-4m4 4l4-4M4 20h16" />
+                    </svg>
+                    Responder Formulário para Baixar
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PUBLICAÇÕES QUE USARAM O DATASET -->
+    <section class="pubs" id="publicacoes">
+        <div class="pubs__inner">
+
+            <h2>Publicações que utilizaram o SteatoDB</h2>
+            <p class="pubs__intro">
+                Trabalhos publicados com imagens desta base. O número de participantes varia entre eles porque a base
+                foi sendo ampliada ao longo do tempo.
+            </p>
+
+            <ul class="pubs__list">
+
+                <li>
+                    <p class="pub__cite">
+                        Pinto, D. M.; Souza, J. C.; Silva, A. C.; Martins Filho, H. M. A.; Paiva, A. C.; Zângaro, R. A.
+                        <strong>Classificação de esteatose hepática não alcoólica em imagens térmicas da região do
+                            fígado utilizando redes neurais convolucionais.</strong>
+                        <em>Simpósio Brasileiro de Computação Aplicada à Saúde (SBCAS)</em>, 21., 2021, p. 302–312. SBC.
+                    </p>
+                    <p class="pub__base">Base utilizada: 36 participantes (14 com DHGNA e 22 saudáveis), 223 imagens.
+                    </p>
+                </li>
+
+                <li>
+                    <p class="pub__cite">
+                        Silva, M. P.; Silva, A. C.; Paiva, A. C.
+                        <strong>Classification of non-alcoholic fatty liver disease in thermal images of the liver using
+                            a Siamese neural network.</strong>
+                        <em>Brazilian Conference on Intelligent Systems (BRACIS)</em>, 2024, p. 260–269. Springer Nature
+                        Switzerland.
+                    </p>
+                    <p class="pub__base">Base utilizada: 40 participantes (18 com NAFLD e 22 saudáveis), 235 imagens.
+                    </p>
+                </li>
+
+                <li>
+                    <p class="pub__cite">
+                        Farias, M. V. S.; Silva, I. F. S.; Silva, A. C.; Martins Filho, H. M. A.; Paiva, A. C.; Cunha,
+                        A.
+                        <strong>Method for detecting non-alcoholic fatty liver disease in abdominal thermography time
+                            series using temporal convolutional networks.</strong>
+                        <em>Procedia Computer Science</em>, v. 256, 2025, p. 756–763.
+                        <a href="https://doi.org/10.1016/j.procs.2025.02.176" target="_blank"
+                            rel="noopener">doi.org/10.1016/j.procs.2025.02.176</a>
+                    </p>
+                    <p class="pub__base">Base utilizada: 29 participantes (8 com NAFLD e 21 saudáveis), 145 imagens.</p>
+                </li>
+
+                <li>
+                    <p class="pub__cite">
+                        Farias, M. V. S.; Silva, I. F. S.; Silva, A. C.; Martins Filho, H. M. A.; Paiva, A. C.
+                        <strong>Classificação de Doença Hepática Gordurosa Não Alcoólica em Imagens Térmicas usando
+                            Temporal Convolutional Networks.</strong>
+                        <!-- completar: evento e ano -->
+                    </p>
+                    <p class="pub__base">Base utilizada: 245 imagens (113 com DHGNA e 132 saudáveis).</p>
+                </li>
+
+                <li>
+                    <p class="pub__cite">
+                        Oliveira, W. A. D.; Brito, F. R. C.; Pinto, D. M.; Silva, A. C.; Martins Filho, H. M. A.
+                        <strong>Classificação da Doença Hepática Esteatótica Associada à Disfunção Metabólica em Imagens
+                            Térmicas Utilizando Séries Temporais.</strong>
+                        <em>Simpósio Brasileiro de Computação Aplicada à Saúde (SBCAS)</em>, 26., 2026, p. 265–276. SBC.
+                    </p>
+                    <p class="pub__base">Base utilizada: 66 participantes (15 com MASLD e 51 saudáveis), 330 imagens.
+                    </p>
+                </li>
+
+                <li>
+                    <p class="pub__cite">
+                        Oliveira, W.; Brito, F.; Silva, A.; Pinto, D.; Silva, A.; Filho, H.
+                        <strong>Classification of Metabolic Dysfunction-Associated Steatotic Liver Disease Using a
+                            Thermal Heterogeneity Representation from Infrared Thermographic Images.</strong>
+                        <!-- completar: evento e ano -->
+                    </p>
+                    <p class="pub__base">Base utilizada: 66 participantes (15 com MASLD e 51 saudáveis), 330 imagens.
+                    </p>
+                </li>
+
+            </ul>
+        </div>
+    </section>
+
+
+    <footer class="site-footer" id="contato">
+        <div class="site-footer__inner">
+
+            <div class="site-footer__top">
+
+                <!-- ESQUERDA: logo + nome do grupo -->
+                <div class="footer-about">
+                    <img src="imagens/Logo-nca.png" alt="Logo NCA" class="footer-logo">
+                    <p>
+                        Grupo de Computação Aplicada -<br>
+                        Universidade Federal do<br>
+                        Maranhão
+                    </p>
+                </div>
+
+                <!-- DIREITA: contato -->
+                <div class="footer-contact">
+                    <h3>Contato</h3>
+                    <address>
+                        NCA Lab, CCET Building<br>
+                        Av. dos Portugueses, 1966<br>
+                        Vila Bacanga, São Luís - MA, Brazil,<br>
+                        65080-80
+                    </address>
+                    <a href="mailto:sistemas.nca@ufma.br" class="footer-email">sistemas.nca@ufma.br</a>
+                </div>
+            </div>
+
+            <!-- LINHA + REDES SOCIAIS -->
+            <div class="site-footer__bottom">
+                <hr class="footer-line">
+
+                <div class="footer-social">
+                    <!-- Facebook -->
+                    <a href="#" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M14 8h3V4h-3c-2.2 0-4 1.8-4 4v2H7v4h3v8h4v-8h3l1-4h-4V8z" />
+                        </svg>
+                    </a>
+                    <!-- Instagram -->
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                            <rect x="4" y="4" width="16" height="16" rx="5" />
+                            <circle cx="12" cy="12" r="3.6" />
+                            <circle cx="17" cy="7" r="0.8" fill="currentColor" stroke="none" />
+                        </svg>
+                    </a>
+                    <!-- X -->
+                    <a href="#" aria-label="X">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"
+                            stroke-linecap="round">
+                            <path d="M5 5l14 14M19 5L5 19" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== POPUPS (sempre antes dos scripts) ========== -->
+
+    <!-- LIGHTBOX (imagem ampliada das amostras) -->
+    <dialog class="lightbox" id="lightbox">
+        <button type="button" class="lightbox__close" aria-label="Fechar">&times;</button>
+        <img src="" alt="" class="lightbox__img">
+        <p class="lightbox__caption"></p>
+    </dialog>
+
+    <!-- POPUP DE DOWNLOAD -->
+    <dialog class="modal" id="modal-download" aria-labelledby="modal-download-titulo">
+        <div class="modal__header">
+            <img src="imagens/Logo-nca.png" alt="NCA" class="modal__logo">
+            <button type="button" class="modal__close" aria-label="Fechar">&times;</button>
+        </div>
+
+        <form class="modal__body" id="form-download">
+            <h2 id="modal-download-titulo">Baixar o SteatoDB</h2>
+            <p class="modal__text">Informe seu e-mail para baixar o dataset. O link de acesso será enviado para o e-mail informado.</p>
+
+            <label for="download-email">E-mail</label>
+            <input type="email" id="download-email" name="email" placeholder="seu@email.com" autocomplete="email"
+                required>
+
+            <label class="modal__check">
+                <input type="checkbox" name="aceite" required>
+                <span>Li e aceito a <a href="#orientacoes" target="_blank">licença e os termos de uso</a>.</span>
+            </label>
+
+            <!-- campo anti-robô: escondido de quem usa o site -->
+            <input type="text" name="website" class="modal__hp" tabindex="-1" autocomplete="off"
+                aria-hidden="true">
+
+            <!-- mensagem de sucesso ou erro -->
+            <p id="download-msg" class="modal__msg" role="status"></p>
+
+            <button type="submit" class="modal__submit">Baixar Dataset</button>
+        </form>
+    </dialog>
+
+    <script src="js/download.js"></script>
+    <script src="js/form-download.js"></script>
+    <script src="js/hero-bg.js"></script>
+    <script src="js/cards.js"></script>
+    <script src="js/deslize.js"></script>
+</body>
+
+</html>
